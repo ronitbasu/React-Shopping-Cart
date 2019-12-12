@@ -1,25 +1,19 @@
 import React, { Component } from 'react';
 import data from './static/data/products';
 import PropTypes from 'prop-types';
+import Cart from './cart.js';
+import Thumb from './thumb.js'
 
 import './App.scss';
+
+console.log(data.products);
 
 class App extends Component {
   render() {
     return (
       <div className="main">
-        <Cart />
+        <Cart products={data.products}/>
         <ProductCatalog products={data.products} />
-      </div>
-    );
-  }
-}
-
-class Cart extends Component {
-  render() {
-    return (
-      <div className="float-cart">
-        <img src="shopping-cart.png" styles={{float: "right"}} alt="cart"/>
       </div>
     );
   }
@@ -61,20 +55,5 @@ class ProductCol extends Component {
     );
   }
 }
-
-const Thumb = props => {
-  return (
-    <div className={props.classes}>
-      <img src={props.src} alt={props.alt} title={props.title} />
-    </div>
-  );
-};
-
-Thumb.propTypes = {
-  alt: PropTypes.string,
-  title: PropTypes.string,
-  classes: PropTypes.string,
-  src: PropTypes.string.isRequired
-};
 
 export default App;
